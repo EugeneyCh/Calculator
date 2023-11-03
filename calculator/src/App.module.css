@@ -1,8 +1,13 @@
-.App {
+.app {
+  min-width: 325px;
+  min-height: 667px;
+  background: #3b4664;
   text-align: center;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +40,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

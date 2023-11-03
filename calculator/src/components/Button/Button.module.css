@@ -1,0 +1,16 @@
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  height: 60px;
+  width: 60px;
+  background-color: #e9e3db;
+  border-radius: 5px;
+  box-shadow: 0px 5px 0px rgba(167, 157, 151, 0.9);
+}
+.buttonView {
+  background-color: inherit;
+  border: none;
+  font-family: "Neris-Black";
+  font-size: 30px;
+}
