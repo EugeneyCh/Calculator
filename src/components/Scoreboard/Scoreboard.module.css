@@ -14,3 +14,16 @@
   padding: 0px 25px;
   margin: 0;
 }
+
+/* //////////////////////////////////////////////////////////////////////////////// */
+
+@media screen and (min-width: 1000px) {
+  .input {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 130px;
+    width: 470px;
+    padding: 0px 35px;
+  }
+}

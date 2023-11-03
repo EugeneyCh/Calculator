@@ -9,13 +9,9 @@
 }
 .listButton {
   display: grid;
-  /* max-width: 100%; */
   width: 275px;
   grid-template-columns: repeat(4, 60px);
   grid-auto-rows: 60px;
-  /* grid-template-columns: repeat(4, 60px); Перші 4 блоки шириною 60px */
-  /* grid-template-rows: repeat(5, 60px); Перших 5 блоків висотою 60px */
-  /* grid-template-columns: repeat(4, 1fr); */
   grid-column-gap: 12px;
   grid-row-gap: 17px;
   padding: 0px;
@@ -36,10 +32,10 @@
   box-shadow: 0px 4px 0px rgba(167, 157, 151, 0.9);
 }
 .button:nth-of-type(4) {
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  list-style-type: none;
+  list-style-type: none; */
   height: 60px;
   width: 60px;
   font-family: "Neris-Black";
@@ -81,4 +77,75 @@
   background: #d13f30;
   border-radius: 5px;
   box-shadow: 0px 4px 0px rgba(127, 39, 33, 0.9);
+}
+
+/* //////////////////////////////////////////////////////////////////////////////// */
+
+@media screen and (min-width: 1000px) {
+  .numPad {
+    width: 470px;
+    height: 420px;
+    padding: 30px 32px;
+  }
+  .listButton {
+    display: grid;
+    width: 470px;
+    grid-template-columns: repeat(4, 100px);
+    grid-auto-rows: 60px;
+    grid-column-gap: 24px;
+    grid-row-gap: 30px;
+    padding: 0px;
+    margin: 0px;
+  }
+  .button {
+    height: 60px;
+    width: 100px;
+    font-family: "Neris-Black";
+    font-size: 30px;
+    border-radius: 10px;
+  }
+  .button:nth-of-type(4) {
+    list-style-type: none;
+    height: 60px;
+    width: 100px;
+    font-family: "Neris-Black";
+    font-size: 18px;
+    color: #e9e3db;
+    background-color: #647297;
+    border-radius: 10px;
+    box-shadow: 0px 4px 0px rgba(49, 61, 91, 0.9);
+  }
+
+  .button:nth-last-child(2) {
+    display: flex;
+    grid-column: span 2;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    height: 60px;
+    width: 225px;
+    font-family: "Neris-Black";
+    font-size: 18px;
+    color: #e9e3db;
+    background-color: #647297;
+    border-radius: 10px;
+    box-shadow: 0px 4px 0px rgba(49, 61, 91, 0.9);
+  }
+
+  .button:last-child {
+    display: flex;
+    grid-column: span 2;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    list-style-type: none;
+    height: 60px;
+    width: 225px;
+    font-family: "Neris-Black";
+    font-size: 18px;
+    color: #e9e3db;
+    background: #d13f30;
+    border-radius: 10px;
+    box-shadow: 0px 4px 0px rgba(127, 39, 33, 0.9);
+  }
 }
