@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import css from "./Scoreboard.module.css";
 
 const Scoreboard = () => {
-  const [number, setNumber] = useState(399.981);
+  const [number, setNumber] = useState("399,981");
 
   const handleNumberChange = (e) => {
     const newNumber = parseInt(e.target.value);
@@ -11,11 +11,14 @@ const Scoreboard = () => {
 
   return (
     <div>
-      <input
+      <p
         className={css.input}
+        maxlength="11"
         value={number}
         onChange={handleNumberChange}
-      />
+      >
+        {number}
+      </p>
     </div>
   );
 };

@@ -11,8 +11,74 @@
   display: grid;
   /* max-width: 100%; */
   width: 275px;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 12px;
+  grid-template-columns: repeat(4, 60px);
+  grid-auto-rows: 60px;
+  /* grid-template-columns: repeat(4, 60px); Перші 4 блоки шириною 60px */
+  /* grid-template-rows: repeat(5, 60px); Перших 5 блоків висотою 60px */
+  /* grid-template-columns: repeat(4, 1fr); */
+  grid-column-gap: 12px;
+  grid-row-gap: 17px;
   padding: 0px;
   margin: 0px;
+}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  height: 60px;
+  width: 60px;
+  font-family: "Neris-Black";
+  font-size: 30px;
+  color: #4b4e5a;
+  background-color: #e9e3db;
+  border-radius: 5px;
+  box-shadow: 0px 4px 0px rgba(167, 157, 151, 0.9);
+}
+.button:nth-of-type(4) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  height: 60px;
+  width: 60px;
+  font-family: "Neris-Black";
+  font-size: 18px;
+  color: #e9e3db;
+  background-color: #647297;
+  border-radius: 5px;
+  box-shadow: 0px 4px 0px rgba(49, 61, 91, 0.9);
+}
+
+.button:nth-last-child(2) {
+  display: flex;
+  grid-column: span 2;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  height: 60px;
+  width: 132px;
+  font-family: "Neris-Black";
+  font-size: 18px;
+  color: #e9e3db;
+  background-color: #647297;
+  border-radius: 5px;
+  box-shadow: 0px 4px 0px rgba(49, 61, 91, 0.9);
+}
+
+.button:last-child {
+  display: flex;
+  grid-column: span 2;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  list-style-type: none;
+  height: 60px;
+  width: 132px;
+  font-family: "Neris-Black";
+  font-size: 18px;
+  color: #e9e3db;
+  background: #d13f30;
+  border-radius: 5px;
+  box-shadow: 0px 4px 0px rgba(127, 39, 33, 0.9);
 }

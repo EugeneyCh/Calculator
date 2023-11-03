@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./NumPad.module.css";
-import Button from "../Button/Button";
+// import Button from "../Button/Button";
 
 const NumPad = () => {
   const buttonsValues = [
@@ -16,7 +16,7 @@ const NumPad = () => {
     "2",
     "3",
     "-",
-    ".",
+    ",",
     "0",
     "/",
     "x",
@@ -27,7 +27,10 @@ const NumPad = () => {
     <div className={css.numPad}>
       <ul className={css.listButton}>
         {buttonsValues.map((buttonsName) => (
-          <Button key={buttonsName} buttonsName={buttonsName} />
+          //   <Button key={buttonsName} buttonsName={buttonsName} />
+          <li key={buttonsName} className={css.button}>
+            {buttonsName}
+          </li>
         ))}
       </ul>
     </div>
