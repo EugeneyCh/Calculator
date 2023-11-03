@@ -1,10 +1,15 @@
 .app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   min-width: 325px;
   min-height: 667px;
   background: #3b4664;
   text-align: center;
   padding-left: 25px;
   padding-right: 25px;
+  margin: 0;
 }
 
 /* .App-logo {
