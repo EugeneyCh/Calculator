@@ -30,6 +30,13 @@ const NumPad = () => {
     "=",
   ];
   const checkButton = (buttonsName) => {
+    if (buttonsName === "-" && lastNumber.length === 0) {
+      createNumber("-");
+    } else {
+      if (lastNumber === "-") {
+        deleteAct();
+      }
+    }
     switch (buttonsName) {
       case "RESET":
         return reset();
@@ -61,15 +68,19 @@ const NumPad = () => {
     if (isDote && num === ",") {
       return;
     }
-    let numberFull = lastNumber + num;
-    setLastNumber(numberFull);
+    // let numberFull = lastNumber + num;
+    setLastNumber(lastNumber + num);
   };
   const reset = () => {
     setSelectedButton("");
     setResult("0");
     setLastNumber("");
+    setIsDote(false);
   };
   const deleteAct = () => {
+    if (lastNumber[lastNumber.length - 1] === ",") {
+      setIsDote(false);
+    }
     lastNumber.length !== 0 && setLastNumber(lastNumber.slice(0, -1));
   };
   const actionWithNumbers = () => {
@@ -82,8 +93,10 @@ const NumPad = () => {
   // };
   useEffect(() => {
     // checkButton(selectedButton);
-    console.log(selectedButton);
-    console.log(firstAction);
+    // console.log(selectedButton);
+    // console.log(firstAction);
+    console.log("Last sign is...", lastNumber[lastNumber.length - 1]);
+    console.log(isDote);
     console.log(lastNumber);
   }, [lastNumber]);
 
