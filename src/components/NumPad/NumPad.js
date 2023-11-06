@@ -83,6 +83,12 @@ const NumPad = () => {
     }
     lastNumber.length !== 0 && setLastNumber(lastNumber.slice(0, -1));
   };
+  const createAction = (num) => {
+    setFirstAction(num);
+    result === "0"
+      ? (setResult(lastNumber), setFirstNumber(lastNumber))
+      : setFirstNumber(lastNumber);
+  };
   const actionWithNumbers = () => {
     let intResult = +result;
     setResult();
@@ -94,7 +100,7 @@ const NumPad = () => {
   useEffect(() => {
     // checkButton(selectedButton);
     // console.log(selectedButton);
-    // console.log(firstAction);
+    console.log(firstAction);
     console.log("Last sign is...", lastNumber[lastNumber.length - 1]);
     console.log(isDote);
     console.log(lastNumber);
