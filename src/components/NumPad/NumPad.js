@@ -5,8 +5,9 @@ import css from "./NumPad.module.css";
 const NumPad = () => {
   const [selectedButton, setSelectedButton] = useState("");
   const [result, setResult] = useState("0");
-  const [firstAction, setFirstAction] = useState("+");
+  const [firstAction, setFirstAction] = useState("");
   const [firstNumber, setFirstNumber] = useState("");
+  const [isFirstNumber, setIsFirstNumber] = useState(false);
   const [lastNumber, setLastNumber] = useState("");
   const [isDote, setIsDote] = useState(false);
   const buttonsValues = [
@@ -34,24 +35,24 @@ const NumPad = () => {
       createNumber("-");
     } else {
       if (lastNumber === "-") {
-        deleteAct();
+        deleteSign();
       }
     }
     switch (buttonsName) {
       case "RESET":
         return reset();
       case "DEL":
-        return deleteAct();
+        return deleteSign();
       case "=":
         return actionWithNumbers();
       case "+":
-        return setFirstAction("+");
+        return createAction("+");
       case "-":
-        return setFirstAction("-");
+        return createAction("-");
       case "x":
-        return setFirstAction("*");
+        return createAction("*");
       case "/":
-        return setFirstAction("/");
+        return createAction("/");
       default:
         createNumber(buttonsName);
         break;
@@ -62,6 +63,7 @@ const NumPad = () => {
     checkButton(sign);
   };
   const createNumber = (num) => {
+    isFirstNumber && setLastNumber("");
     if (num === ",") {
       setIsDote(true);
     }
@@ -71,23 +73,43 @@ const NumPad = () => {
     // let numberFull = lastNumber + num;
     setLastNumber(lastNumber + num);
   };
+
+  ////////   RESET    /////////////////////
+
   const reset = () => {
     setSelectedButton("");
     setResult("0");
     setLastNumber("");
     setIsDote(false);
+    setFirstAction("");
+    setFirstNumber("");
+    setIsFirstNumber(false);
   };
-  const deleteAct = () => {
+
+  ///////    DELETE       ////////////////////
+  const deleteSign = () => {
     if (lastNumber[lastNumber.length - 1] === ",") {
       setIsDote(false);
     }
-    lastNumber.length !== 0 && setLastNumber(lastNumber.slice(0, -1));
+    if (lastNumber.length !== 0) {
+      setLastNumber(lastNumber.slice(0, -1));
+      setFirstNumber("");
+      setFirstAction("");
+    }
   };
+
+  //////////////
+  //  ??  firstAction.length>0&&isFirstNumber?actionWithNumbers():
+
   const createAction = (num) => {
     setFirstAction(num);
-    result === "0"
-      ? (setResult(lastNumber), setFirstNumber(lastNumber))
-      : setFirstNumber(lastNumber);
+    if (result === "0" && firstNumber === "" && lastNumber.length > 0) {
+      setResult(lastNumber);
+    }
+    setFirstNumber(lastNumber);
+    setIsFirstNumber(true);
+    setLastNumber("");
+    setIsDote(false);
   };
   const actionWithNumbers = () => {
     let intResult = +result;
@@ -104,7 +126,9 @@ const NumPad = () => {
     console.log("Last sign is...", lastNumber[lastNumber.length - 1]);
     console.log(isDote);
     console.log(lastNumber);
-  }, [lastNumber]);
+    console.log("Action", firstAction);
+    console.log("FirstNumber", firstNumber);
+  }, [lastNumber, firstAction]);
 
   return (
     <div className={css.numPad}>
