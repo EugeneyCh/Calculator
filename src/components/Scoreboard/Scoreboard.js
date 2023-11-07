@@ -13,7 +13,7 @@ const Scoreboard = () => {
     <div>
       <p
         className={css.input}
-        maxlength="11"
+        maxLength="11"
         value={number}
         onChange={handleNumberChange}
       >
