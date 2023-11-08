@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import css from "./NumPad.module.css";
 // import Button from "../Button/Button";
 
 const NumPad = () => {
   const [selectedButton, setSelectedButton] = useState("");
-  const [result, setResult] = useState("0");
+  const [result, setResult] = useState("");
   const [firstAction, setFirstAction] = useState("");
   const [firstNumber, setFirstNumber] = useState("");
   const [isFirstNumber, setIsFirstNumber] = useState(false);
@@ -78,7 +78,7 @@ const NumPad = () => {
 
   const reset = () => {
     setSelectedButton("");
-    setResult("0");
+    setResult("");
     setLastNumber("");
     setIsDote(false);
     setFirstAction("");
@@ -98,18 +98,42 @@ const NumPad = () => {
     }
   };
 
-  //////////////
+  ////////////// GET_Result     /////////////////////////
   //  ??  firstAction.length>0&&isFirstNumber?actionWithNumbers():
 
-  const createAction = (num) => {
-    setFirstAction(num);
-    if (result === "0" && firstNumber === "" && lastNumber.length > 0) {
-      setResult(lastNumber);
+  function getResult(f, a, l) {
+    const stringToNumber = (n) => (n + "").split(",").join(".") * 1;
+    const toString = (num) => (num + "").split(".").join(",");
+    switch (a) {
+      case "+":
+        return toString(stringToNumber(f) + stringToNumber(l));
+      case "-":
+        return toString(stringToNumber(f) - stringToNumber(l));
+      case "*":
+        return toString(stringToNumber(f) * stringToNumber(l));
+      case "/":
+        return toString(stringToNumber(f) / stringToNumber(l));
+      default:
+        return;
     }
-    setFirstNumber(lastNumber);
-    setIsFirstNumber(true);
-    setLastNumber("");
-    setIsDote(false);
+  }
+
+  const createAction = (num) => {
+    if (firstNumber.length === 0 && lastNumber.length === 0) return;
+    if (firstNumber.length > 0 && lastNumber.length > 0) {
+      let res = getResult(firstNumber, firstAction, lastNumber);
+      setResult(() => res);
+
+      return;
+    }
+    setFirstAction(num);
+    if (result === "" && firstNumber === "" && lastNumber.length > 0) {
+      // setResult(lastNumber);
+      setFirstNumber(lastNumber);
+      setIsFirstNumber(true);
+      setLastNumber("");
+      setIsDote(false);
+    }
   };
   const actionWithNumbers = () => {
     let intResult = +result;
@@ -128,6 +152,8 @@ const NumPad = () => {
     console.log(lastNumber);
     console.log("Action", firstAction);
     console.log("FirstNumber", firstNumber);
+    console.log("LastNumber", lastNumber);
+    console.log("Result is", result);
   }, [lastNumber, firstAction]);
 
   return (
