@@ -1,7 +1,8 @@
-import css from "./App.module.css";
-import Header from "./components/Header/Header";
-import NumPad from "./components/NumPad/NumPad";
-import Scoreboard from "./components/Scoreboard/Scoreboard";
+import React from 'react';
+import css from './App.module.css';
+import Header from './components/Header/Header';
+import NumPad from './components/NumPad/NumPad';
+import Scoreboard from './components/Scoreboard/Scoreboard';
 
 function App() {
   return (
