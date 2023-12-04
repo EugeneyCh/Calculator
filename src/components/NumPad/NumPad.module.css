@@ -7,6 +7,7 @@
   margin-top: 25px;
   padding: 25px;
 }
+
 .listButton {
   display: grid;
   width: 275px;
@@ -17,6 +18,7 @@
   padding: 0px;
   margin: 0px;
 }
+
 .button {
   display: flex;
   justify-content: center;
@@ -31,6 +33,7 @@
   border-radius: 5px;
   box-shadow: 0px 4px 0px rgba(167, 157, 151, 0.9);
 }
+
 .button:nth-of-type(4) {
   /* display: flex;
   justify-content: center;
@@ -87,6 +90,7 @@
     height: 420px;
     padding: 30px 32px;
   }
+
   .listButton {
     display: grid;
     width: 470px;
@@ -97,6 +101,7 @@
     padding: 0px;
     margin: 0px;
   }
+
   .button {
     height: 60px;
     width: 100px;
@@ -104,6 +109,7 @@
     font-size: 30px;
     border-radius: 10px;
   }
+
   .button:nth-of-type(4) {
     list-style-type: none;
     height: 60px;
